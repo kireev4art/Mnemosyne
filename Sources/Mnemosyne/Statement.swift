@@ -83,20 +83,40 @@ public struct Statement {
         ReturnCode(sqlite3_clear_bindings(pointer))
     }
 
-    public func columnDouble(at index: Int32) -> Double {
+    public func column(at index: Int32) -> Double {
         sqlite3_column_double(pointer, index)
     }
 
-    public func columnInt(at index: Int32) -> Int32 {
+    public func column(at index: Int32) -> Int32 {
         sqlite3_column_int(pointer, index)
     }
 
-    public func columnInt64(at index: Int32) -> Int64 {
+    public func column(at index: Int32) -> Int64 {
         sqlite3_column_int64(pointer, index)
     }
 
-    public func columnText(at index: Int32) -> String {
+    public func column(at index: Int32) -> String {
         String(cString: sqlite3_column_text(pointer, index))
+    }
+
+    public func column(at index: Int32) -> Double? {
+        guard columnType(at: index) == .float else { return nil }
+        return sqlite3_column_double(pointer, index)
+    }
+
+    public func column(at index: Int32) -> Int32? {
+        guard columnType(at: index) == .integer else { return nil }
+        return sqlite3_column_int(pointer, index)
+    }
+
+    public func column(at index: Int32) -> Int64? {
+        guard columnType(at: index) == .integer else { return nil }
+        return sqlite3_column_int64(pointer, index)
+    }
+
+    public func column(at index: Int32) -> String? {
+        guard columnType(at: index) == .text else { return nil }
+        return String(cString: sqlite3_column_text(pointer, index))
     }
 
     public func columnBytes(at index: Int32) -> Int32 {
