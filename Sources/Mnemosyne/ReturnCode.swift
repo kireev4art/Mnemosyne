@@ -4,7 +4,7 @@ import SQLite3
 /// Return code by SQLite3 C-API
 ///
 /// [docs](https://www.sqlite.org/rescode.html)
-public enum ReturnCode {
+public enum ReturnCode: Equatable {
     case unknown(Int32)
 
     // primary
