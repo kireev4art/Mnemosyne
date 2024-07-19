@@ -67,6 +67,7 @@ public struct Connection {
         sqlite3_changes(pointer)
     }
 
+    @available(iOS 15.4, *)
     @available(macOS 12.3, *)
     public var changes64: Int64 {
         sqlite3_changes64(pointer)
@@ -88,6 +89,7 @@ public struct Connection {
         sqlite3_interrupt(pointer)
     }
 
+    @available(iOS 17.2, *)
     @available(macOS 14.2, *)
     public var isInterrupted: Bool {
         let int32 = sqlite3_is_interrupted(pointer)
@@ -129,6 +131,7 @@ public struct Connection {
         sqlite3_total_changes(pointer)
     }
 
+    @available(iOS 15.4, *)
     @available(macOS 12.3, *)
     public var totalChanges64: Int64 {
         sqlite3_total_changes64(pointer)

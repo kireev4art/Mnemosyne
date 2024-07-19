@@ -168,6 +168,7 @@ public struct Statement {
         String(cString: sqlite3_expanded_sql(pointer))
     }
 
+    @available(iOS 15.0, *)
     @available(macOS 12.0, *)
     public var normalizedSql: String {
         String(cString: sqlite3_normalized_sql(pointer))
