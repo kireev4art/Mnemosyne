@@ -111,7 +111,7 @@ public struct Connection {
         sqlite3_last_insert_rowid(pointer)
     }
 
-    func prepare2(sql: String) -> (code: ReturnCode, statement: Statement) {
+    public func prepare2(sql: String) -> (code: ReturnCode, statement: Statement) {
         var statementPointer: OpaquePointer?
         let int32 = sqlite3_prepare_v2(pointer, sql, -1, &statementPointer, nil)
         let returnCode = ReturnCode(int32)
